@@ -1,0 +1,25 @@
+plugins {
+    id 'application'
+    id 'java'
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+}
+
+application {tasks.register('prepareDocs', Copy) {
+    description = 'Copies website files to docs folder'
+    group = 'documentation'
+
+    from('src/main/resources/website') {
+        include '**/*.html', '**/*.css', '**/*.png'
+    }
+
+    into("$rootDir/docs")
+}
+    mainClass = 'org.example.Main'
+}
