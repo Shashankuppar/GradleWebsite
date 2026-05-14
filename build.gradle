@@ -8,7 +8,8 @@ repositories {
 }
 
 dependencies {
-    testImplementation 'org.junit.jupiter:junit-jupiter:5.8.1'
+    implementation 'org.seleniumhq.selenium:selenium-java:4.31.0'
+    testImplementation 'org.testng:testng:7.11.0'
 }
 
 application {tasks.register('prepareDocs', Copy) {
@@ -22,4 +23,7 @@ application {tasks.register('prepareDocs', Copy) {
     into("$rootDir/docs")
 }
     mainClass = 'org.example.Main'
+}
+test {
+    useTestNG()
 }
